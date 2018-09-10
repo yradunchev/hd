@@ -1,5 +1,8 @@
 # hd
 
+![weight plot](plots/weight.png)
+![blood sugar level plot](plots/mmolL.png)
+
 ## scripts:
 
 _scripts/mprocess_ - calculate blood sugar level data trend   
@@ -20,7 +23,5 @@ _data/diet_ - diet plan
 _plots/weight.png_ - weight data plot   
 _plots/mmolL.png_ - blood sugar level plot   
 
-![weight plot](plots/weight.png)
-![blood sugar level plot](plots/mmolL.png)
 
 
