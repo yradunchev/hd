@@ -25,5 +25,8 @@ _plots/mmolL.png_ - blood sugar level plot
 
 ## links:
 
-[The Hacker's Diet, How to lose weight and hair through stress and poor nutrition By John Walker](http://www.fourmilab.ch/hackdiet/)
+[The Hacker's Diet, How to lose weight and hair through stress and poor nutrition By John Walker](http://www.fourmilab.ch/hackdiet/)  
+[Diet Doctor - A low-carb diet for beginners](https://www.dietdoctor.com/low-carb)   
+[No Sugar](https://www.facebook.com/Nooosugar/)
+
 
