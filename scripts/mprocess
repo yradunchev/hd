@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+
+from os.path import expanduser
+filein = expanduser("~")+"/hd/data/mmolL"
+fileout = expanduser("~")+"/hd/data/mprocessed"
+
+trend = None
+f = open(filein, "r")
+s = "#Date Weight Trend\n"
+for line in f:
+    if len(line.strip()) == 0:
+        continue
+    splitline = line.split(" ")
+    date = splitline[0]
+    weight = float(splitline[1])
+    if trend is None:
+        trend = weight
+    else:
+        trend = trend + 0.1 * (weight - trend)
+    s += "%s %.1f %.2f\n" %(date, weight, trend)
+f.close()
+
+p = open(fileout, "w")
+p.write(s)
+p.close()
