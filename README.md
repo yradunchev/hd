@@ -18,10 +18,12 @@ _data/mprocessed_ - mmol/L data with added exponentially smoothed moving average
 _data/wprocessed_ - weight data with added exponentially smoothed moving average with 10% smoothing   
 _data/diet_ - diet plan
 
-## plots
+## plots:
 
 _plots/weight.png_ - weight data plot   
 _plots/mmolL.png_ - blood sugar level plot   
 
+## links:
 
+[The Hacker's Diet, How to lose weight and hair through stress and poor nutrition By John Walker](http://www.fourmilab.ch/hackdiet/)
 
