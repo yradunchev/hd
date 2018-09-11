@@ -36,6 +36,7 @@ set terminal png enhanced background rgb '#F0F7D4'
 set output "$HOME/hd/plots/mmolL.png"
 set xlabel "date"
 set ylabel "mmol/L"
+set key reverse spacing 0.85 box
 
 set arrow from graph 0,first 6.1 to graph 1, first 6.1 nohead lt 0 lw 2 lc rgb '#5F9EA0' front
 
