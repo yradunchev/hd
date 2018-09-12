@@ -29,7 +29,7 @@ set y2tics 0.5
 unset mxtics
 set grid
 #set xrange ["$rangeFrom":"$rangeTo"]
-set xrange [(system("date -d 'now' +%s")-2592000):(system("date -d 'now' +%s"))]
+set xrange [(system("date -d 'now' +%s")-2678400):(system("date -d 'now' +%s"))]
 set autoscale y
 #set terminal x11 size 800,600 background "white"
 set terminal png enhanced background rgb '#F0F7D4'
