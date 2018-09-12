@@ -6,13 +6,13 @@ DIETFILE="$HOME/hd/data/diet"
 
 if [ "$#" -eq 0 ]; then
   rangeFrom=$( date -d "-31 days" $FORMAT )
-  rangeTo=$( date -d "+2 day" $FORMAT )
+  rangeTo=$( date -d "+1 day" $FORMAT )
 elif [ "$#" -eq 2 ]; then
   rangeFrom=$( date -d "$1 - 1 day" $FORMAT )
   rangeTo=$( date -d "$2 + 1 day" $FORMAT )
 else
-    echo "Usage: $0 [FROM_DATE TO_DATE]"
-    exit -1
+  echo "Usage: $0 [FROM_DATE TO_DATE]"
+  exit -1
 fi
 
 if [ -e "$DIETFILE" ]; then
@@ -29,8 +29,7 @@ set ytics 0.5
 set y2tics 0.5
 unset mxtics
 set grid
-#set xrange ["$rangeFrom":"$rangeTo"]
-set xrange [(system("date -d 'now' +%s")-2678400):(system("date -d 'now' +%s")+86400)]
+set xrange ["$rangeFrom":"$rangeTo"]
 set autoscale y
 #set terminal x11 size 800,600 background "white"
 set terminal png enhanced background rgb '#F0F7D4'
