@@ -30,4 +30,7 @@ _plots/mmolL.png_ - blood sugar level plot
 [No Sugar](https://www.facebook.com/Nooosugar/)   
 [NUT Nutrition Software](http://nut.sourceforge.net/)    
 [IF on Reddit](https://www.reddit.com/r/intermittentfasting/wiki/index)   
-[Jason Fung, MD on IF](https://www.youtube.com/watch?v=v9Aw0P7GjHE)
+[Jason Fung, MD on IF](https://www.youtube.com/watch?v=v9Aw0P7GjHE)   
+[Sugar Coated Documentary](https://www.dailymotion.com/video/x61x56l)   
+[Sugar is Not a Treat, Jody Stanislaw, TEDxSunValley](https://www.youtube.com/watch?v=tic7X3ET4gE)   
+[The mathematics of weight loss, Ruben Meerman, TEDxQUT](https://www.youtube.com/watch?v=vuIlsN32WaE)
