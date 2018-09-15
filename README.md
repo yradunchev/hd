@@ -34,4 +34,5 @@ _plots/mmolL.png_ - blood sugar level plot
 [Jason Fung, MD on IF](https://www.youtube.com/watch?v=v9Aw0P7GjHE)   
 [Sugar Coated Documentary](https://www.dailymotion.com/video/x61x56l)   
 [Sugar is Not a Treat, Jody Stanislaw, TEDxSunValley](https://www.youtube.com/watch?v=tic7X3ET4gE)   
-[The mathematics of weight loss, Ruben Meerman, TEDxQUT](https://www.youtube.com/watch?v=vuIlsN32WaE)
+[The mathematics of weight loss, Ruben Meerman, TEDxQUT](https://www.youtube.com/watch?v=vuIlsN32WaE)   
+[Sugar: The Bitter Truth](https://www.youtube.com/watch?v=dBnniua6-oM)
