@@ -10,9 +10,9 @@ _scripts/plot_ - plot data for last 31 days
 
 ## data:
 
-_data/data_ - weight and blood sugar level measurements
+_data/data_ - weight and blood sugar level measurements   
 _data/processed_ - weight and bsl data with added exponentially smoothed moving average with 10% smoothing and BMI   
-_data/diet_ - diet plan
+_data/diet_ - diet plan   
 
 ## plots:
 
