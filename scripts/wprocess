@@ -13,11 +13,12 @@ for line in f:
     splitline = line.split(" ")
     date = splitline[0]
     weight = float(splitline[1])
+    bmi = weight/(1.75**2)
     if trend is None:
         trend = weight
     else:
         trend = trend + 0.1 * (weight - trend)
-    s += "%s %.1f %.2f\n" %(date, weight, trend)
+    s += "%s %.1f %.2f %.2f\n" %(date, weight, trend, bmi)
 f.close()
 
 p = open(fileout, "w")
