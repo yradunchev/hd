@@ -1,7 +1,6 @@
 # my lchf-sugarfree-if journey
 
 [![dataplot](plots/dataplot.png)](https://raw.githubusercontent.com/yradunchev/hd/master/plots/dataplot.png)   
-![correlation weight loss blood sugar](plots/weightbsl.png)
 
 ## scripts:
 
