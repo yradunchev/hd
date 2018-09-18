@@ -31,10 +31,10 @@ set tics font ",9"
 set grid
 set xrange ["$rangeFrom":"$rangeTo"]
 set autoscale y
-set terminal png enhanced background rgb '#F0F7D4' size 1200,1200
+set terminal png enhanced background rgb '#F0F7D4' size 1200,600
 set output "$HOME/hd/plots/dataplot.png"
 set key reverse spacing 0.85 box font ',9'
-set multiplot layout 2,2 title "Last 31 Days Data" font ",12"
+set multiplot layout 1,2 title "Last 31 Days Data" font ",12"
 #set lmargin 4.5
 #set rmargin 4.5
 set tmargin 1.5 
