@@ -18,7 +18,7 @@ set ytics 0,60
 set y2tics 0,60
 set terminal png enhanced background rgb '#F0F7D4' size 800,600
 set output "$HOME/hd/plots/$1sleep.png"
-set key reverse spacing 0.85 box font ',9' autotitle columnhead
+set key invert reverse spacing 0.85 box font ',9' autotitle columnhead
 set tics font ",9"
 set boxwidth 0.50 relative
 set style fill solid 0.50 border -1
