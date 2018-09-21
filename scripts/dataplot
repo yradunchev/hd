@@ -1,16 +1,16 @@
 #!/bin/bash
 
 FORMAT='+%Y%m%d%H%M'
-FILE="$HOME/hd/data/$1sleep"
+FILE="$HOME/hd/data/$1"
 
 rangeTo=$( < "$FILE" wc -l )
 (( rangeFrom = rangeTo - 30 ))
 
 gnuplot -p << EOF
-set terminal png enhanced background rgb '#F0F7D4' size 800,600
-set output "$HOME/hd/plots/$1sleep.png"
+set terminal png enhanced background rgb '#F0F7D4' size 1200,600
+set output "$HOME/hd/plots/$1.png"
 set grid
-set title "hours slept $1" font ",12"
+set title "hours slept" font ",12"
 set key invert reverse spacing 0.85 box font ',9' autotitle columnhead
 set tics font ",9"
 set xtics rotate nomirror
@@ -25,7 +25,15 @@ set style line 101 lt 0.5 lc rgb "gray" lw 1
 set grid noxtics mytics ytics ls 100, ls 101
 set boxwidth 0.50 relative
 set style fill solid 0.50 border -1
+set multiplot layout 1,2 title "Data for $1" font ",12"
+set tmargin 1.5
 
 plot "$FILE" using 3:xticlabels(1) lc rgb 'yellow', "" using 2 lc rgb 'green'
+
+set title "steps count" font ",12"
+set ytics 1000
+set y2tics 1000
+set mytics 2.5
+plot "$FILE" using 6:xticlabels(1) lc rgb 'green'
 EOF
 
