@@ -1,7 +1,7 @@
 # my lchf-sugarfree-if journey
 
 [![healthplot](plots/dataplot.png)](https://raw.githubusercontent.com/yradunchev/hd/master/plots/dataplot.png)   
-[![dataplot](plots/201809.png)](https://raw.githubusercontent.com/yradunchev/hd/master/plots/201809.png)   
+[![dataplot](plots/201810.png)](https://raw.githubusercontent.com/yradunchev/hd/master/plots/201810.png)   
 
 ## scripts:
 
@@ -15,12 +15,12 @@ _data/data_ - weight and blood sugar level measurements
 _data/processed_ - weight and bsl data with added exponentially smoothed moving average with 10% smoothing and BMI   
 _data/diet_ - diet plan   
 _data/bp_ - blood pressure measurements   
-_data/201809_ - monthly sleep & steps data
+_data/201810_ - monthly sleep & steps data
 
 ## plots:
 
 _plots/dataplot.png_ - last 31 days data plot   
-_plots/201809.png_ - current month sleep & steps data   
+_plots/201810.png_ - current month sleep & steps data   
 _plots/weightbsl.png_ - relation between weight loss and bsl
 
 ## links:
