@@ -1,4 +1,4 @@
-# my lchf-sugarfree-if journey
+# my if-sugarfree-lchf journey
 
 [![healthplot](plots/dataplot.png)](https://raw.githubusercontent.com/yradunchev/hd/master/plots/dataplot.png)   
 [![dataplot](plots/201810.png)](https://raw.githubusercontent.com/yradunchev/hd/master/plots/201810.png)   
