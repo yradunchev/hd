@@ -1,0 +1,28 @@
+#!/bin/bash
+
+FORMAT='+%Y%m%d%H%M'
+FILE="$HOME/hd/data/bp"
+
+rangeTo=$( < "$FILE" wc -l )
+(( rangeFrom = rangeTo - 30 ))
+
+gnuplot -p << EOF
+set terminal png enhanced background rgb '#F0F7D4' size 600,400
+set output "$HOME/hd/plots/bp.png"
+set grid
+set title "blood presure" font ",12"
+set key reverse spacing 0.85 box font ',9' autotitle columnhead
+set tics font ",9"
+set xtics rotate nomirror
+set mytics 10
+set autoscale y
+set style histogram clustered gap 1
+set style data histograms 
+set style line 100 lt 1 lc rgb "black" lw 1
+set style line 101 lt 0.5 lc rgb "gray" lw 1
+set grid noxtics mytics ytics ls 100, ls 101
+set boxwidth 0.5 relative
+set style fill solid 0.50 border -1
+plot "$FILE" u 2:xticlabels(1) lc rgb 'green', "" u 3 lc rgb 'yellow'
+EOF
+
