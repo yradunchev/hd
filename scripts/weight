@@ -1,0 +1,47 @@
+#!/bin/bash
+
+FORMAT='+%Y-%m-%d'
+FILE="$HOME/hd/data/processed"
+DIETFILE="$HOME/hd/data/diet"
+
+if [ "$#" -eq 0 ]; then
+  rangeFrom=$( date -d "-31 days" $FORMAT )
+  rangeTo=$( date -d "+1 day" $FORMAT )
+elif [ "$#" -eq 2 ]; then
+  rangeFrom=$( date -d "$1 - 1 day" $FORMAT )
+  rangeTo=$( date -d "$2 + 1 day" $FORMAT )
+else
+  echo "Usage: $0 [FROM_DATE TO_DATE]"
+  exit -1
+fi
+
+if [ -e "$DIETFILE" ]; then
+#  PLOT_DIET="\"$DIETFILE\" using 1:2 with lines dashtype 2 linecolor \"dark-yellow\" linewidth 1.5 notitle"
+  PLOT_DIET="\"$DIETFILE\" using 1:2 with lines lt 0 lw 2 lc rgb '#5F9EA0' title 'diet plan'"
+fi
+
+gnuplot -p << EOF
+set xdata time
+set timefmt "%Y-%m-%d"
+set format x "%m-%d"
+set xtics 86400 rotate # 1 day
+unset mxtics
+set ytics 0.5
+set tics font ",9"
+set grid
+set xrange ["$rangeFrom":"$rangeTo"]
+set autoscale y
+set terminal png truecolor enhanced background rgb '#F0F7D4' size 800,600
+set output "$HOME/hd/plots/weight.png"
+set key reverse spacing 0.85 box font ',9'
+#set multiplot layout 1,2 title "Last 31 Days Data" font ",12"
+#set lmargin 4.5
+#set rmargin 4.5
+#set tmargin 1.5 
+
+set x2label 'weight' font ',11'
+plot "$FILE" using 1:2 with points linecolor rgb '#FC600A' pt 6 title "measured", \
+"$FILE" using 1:3 with lines linecolor rgb '#FC600A' linewidth 1.5 title "trend", \
+"$FILE" using 1:3:(0):(\$2-\$3) with vectors nohead linecolor rgb '#B2D732' linewidth 1.5 notitle, \
+$PLOT_DIET
+EOF
