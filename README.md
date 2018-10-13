@@ -2,6 +2,7 @@
 
 [![healthplot](plots/dataplot.png)](https://raw.githubusercontent.com/yradunchev/hd/master/plots/dataplot.png)   
 [![dataplot](plots/201810.png)](https://raw.githubusercontent.com/yradunchev/hd/master/plots/201810.png)   
+[![bloodpresure](plots/bp.png)](https://raw.githubusercontent.com/yradunchev/hd/master/plots/bp.png)   
 
 ## scripts:
 
