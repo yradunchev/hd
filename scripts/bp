@@ -10,7 +10,7 @@ gnuplot -p << EOF
 set terminal png enhanced background rgb '#F0F7D4' size 600,400
 set output "$HOME/hd/plots/bp.png"
 set grid
-set title "blood presure and heart rate" font ",12"
+set title "blood pressure and heart rate" font ",12"
 set key reverse spacing 0.85 box font ',9' autotitle columnhead
 set tics font ",9"
 set xtics rotate nomirror
