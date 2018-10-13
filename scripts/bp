@@ -23,6 +23,6 @@ set style line 101 lt 0.5 lc rgb "gray" lw 1
 set grid noxtics mytics ytics ls 100, ls 101
 set boxwidth 0.5 relative
 set style fill solid 0.50 border -1
-plot "$FILE" u 2:xticlabels(1) lc rgb 'green', "" u 3 lc rgb 'yellow'
+plot "$FILE" u 2:xticlabels(1) lc rgb '#9ACD32', "" u 3 lc rgb 'yellow', "" u 4 lc rgb 'orange'
 EOF
 
