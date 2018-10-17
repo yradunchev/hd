@@ -46,7 +46,7 @@ plot "$FILE" using 1:2 with points linecolor rgb '#FC600A' pt 6 title "weight", 
 $PLOT_DIET
 
 set arrow from graph 0,first 6.1 to graph 1, first 6.1 nohead lt 0 lw 2 lc rgb '#5F9EA0' front
-set arrow from graph 0,first 4.1 to graph 1, first 4.1 nohead lt 0 lw 2 lc rgb '#5F9EA0' front
+# set arrow from graph 0,first 4.1 to graph 1, first 4.1 nohead lt 0 lw 2 lc rgb '#5F9EA0' front
 set x2label 'blood sugar level' font ',11'
 plot 6.1 with filledcurves y1=4.1 fs transparent solid 0.15 lc rgb '#AFEEEE' notitle, \
 "$FILE" using 1:5 with points linecolor rgb '#FC600A' pt 6 title "mmol/L", \
