@@ -24,11 +24,12 @@ gnuplot -p << EOF
 set xdata time
 set timefmt "%Y-%m-%d"
 set format x "%m-%d"
-set xtics 86400 rotate # 1 day
-unset mxtics
+set xtics 259200 rotate # 1 day
+set mxtics 3
+set xtics scale 1,1
 set ytics 0.5
 set tics font ",9"
-set grid
+set grid xtics mxtics ytics mytics
 set xrange ["$rangeFrom":"$rangeTo"]
 set autoscale y
 set terminal png truecolor enhanced background rgb '#F0F7D4' size 1200,600
