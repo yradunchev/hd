@@ -7,6 +7,7 @@ rangeTo=$( < "$FILE" wc -l )
 (( rangeFrom = rangeTo - 30 ))
 
 gnuplot -p << EOF
+stats '$FILE' using 2:6 nooutput
 set terminal png enhanced background rgb '#F0F7D4' size 1200,600
 set output "$HOME/hd/plots/$1.png"
 set grid
@@ -27,20 +28,14 @@ set boxwidth 0.5 relative
 set style fill solid 0.50 border -1
 set multiplot layout 1,2 title "Data for $1" font ",12"
 set tmargin 1.5
-set fit quiet
-set fit logfile '/dev/null'
-f(x) = mean_s
-fit f(x) "$FILE" u 1:2 via mean_s
-f(x) = mean_w
-fit f(x) "$FILE" u 1:6 via mean_w
 
 plot "$FILE" using 3:xticlabels(1) lc rgb 'yellow', "" using 2 lc rgb 'green', \
-mean_s w l lc rgb 'orange'
+STATS_mean_x w l lc rgb 'orange'
 
 set title "steps count" font ",12"
 set ytics 1000
 set y2tics 1000
 set mytics 2.5
-plot "$FILE" using 6:xticlabels(1) lc rgb 'green', mean_w w l lc rgb 'orange'
+plot "$FILE" using 6:xticlabels(1) lc rgb 'green', STATS_mean_y w l lc rgb 'orange'
 EOF
 
