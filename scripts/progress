@@ -17,7 +17,7 @@ fi
 
 if [ -e "$DIETFILE" ]; then
 #  PLOT_DIET="\"$DIETFILE\" using 1:2 with lines dashtype 2 linecolor \"dark-yellow\" linewidth 1.5 notitle"
-  PLOT_DIET="\"$DIETFILE\" using 1:2 with lines lt 0 lw 2 lc rgb '#5F9EA0' title 'diet plan'"
+  PLOT_DIET="\"$DIETFILE\" using 1:2 with lines lt 0 lw 2 lc rgb '#5F9EA0' title 'планирано'"
 fi
 
 gnuplot -p << EOF
@@ -35,12 +35,12 @@ set autoscale x
 set terminal png truecolor enhanced background rgb '#F0F7D4' size 800,600
 set output "$HOME/hd/plots/progress.png"
 set key reverse spacing 0.85 box font ',9'
-set x2label 'overall weight loss porgress' font ',11'
+set x2label 'изменение на телесното тегло' font ',11'
 
 set arrow from graph 0,first 92 to graph 1, first 92 nohead lt 0 lw 2 lc rgb '#FC600A' front
 
-plot 92 with filledcurves y1=200 fs transparent solid 0.25 lc rgb '#FF4500' title "obese", \
-92 with filledcurves y1=77 fs transparent solid 0.25 lc rgb '#FFA500' title "overweight", \
-"$FILE" using 1:3 with lines linecolor rgb '#2E8B57' linewidth 1.5 title "trend", \
+plot 92 with filledcurves y1=200 fs transparent solid 0.25 lc rgb '#FF4500' title "затлъстяване", \
+92 with filledcurves y1=77 fs transparent solid 0.25 lc rgb '#FFA500' title "наднормено тегло", \
+"$FILE" using 1:3 with lines linecolor rgb '#2E8B57' linewidth 1.5 title "тренд", \
 $PLOT_DIET
 EOF

@@ -17,7 +17,7 @@ fi
 
 if [ -e "$DIETFILE" ]; then
 #  PLOT_DIET="\"$DIETFILE\" using 1:2 with lines dashtype 2 linecolor \"dark-yellow\" linewidth 1.5 notitle"
-  PLOT_DIET="\"$DIETFILE\" using 1:2 with lines lt 0 lw 2 lc rgb '#5F9EA0' title 'diet plan'"
+  PLOT_DIET="\"$DIETFILE\" using 1:2 with lines lt 0 lw 2 lc rgb '#5F9EA0' title 'планирано'"
 fi
 
 gnuplot -p << EOF
@@ -35,9 +35,9 @@ set autoscale y
 set terminal png truecolor enhanced background rgb '#F0F7D4' size 800,600
 set output "$HOME/hd/plots/weight.png"
 set key reverse spacing 0.85 box font ',9'
-set x2label 'weight' font ',11'
-plot "$FILE" using 1:2 with points linecolor rgb '#FC600A' pt 6 title "measured", \
-"$FILE" using 1:3 with lines linecolor rgb '#FC600A' linewidth 1.5 title "trend", \
+set x2label 'тегло' font ',11'
+plot "$FILE" using 1:2 with points linecolor rgb '#FC600A' pt 6 title "измерено", \
+"$FILE" using 1:3 with lines linecolor rgb '#FC600A' linewidth 1.5 title "тренд", \
 "$FILE" using 1:3:(0):(\$2-\$3) with vectors nohead linecolor rgb '#B2D732' linewidth 1.5 notitle, \
 $PLOT_DIET
 EOF

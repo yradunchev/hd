@@ -17,7 +17,7 @@ fi
 
 if [ -e "$DIETFILE" ]; then
 #  PLOT_DIET="\"$DIETFILE\" using 1:2 with lines dashtype 2 linecolor \"dark-yellow\" linewidth 1.5 notitle"
-  PLOT_DIET="\"$DIETFILE\" using 1:2 with lines lt 0 lw 2 lc rgb '#5F9EA0' title 'diet plan'"
+  PLOT_DIET="\"$DIETFILE\" using 1:2 with lines lt 0 lw 2 lc rgb '#5F9EA0' title 'планирано'"
 fi
 
 gnuplot -p << EOF
@@ -31,25 +31,25 @@ set tics font ",9"
 set grid
 set xrange ["$rangeFrom":"$rangeTo"]
 set autoscale y
-set terminal png truecolor enhanced background rgb '#F0F7D4' size 800,600
+set terminal png truecolor enhanced background rgb '#F0F7D4' size 1200,600
 set output "$HOME/hd/plots/dataplot.png"
 set key reverse spacing 0.85 box font ',9'
-#set multiplot layout 1,2 title "Last 31 Days Data" font ",12"
+set multiplot layout 1,2 title "данни за последните 31 дена" font ",12"
 #set lmargin 4.5
 #set rmargin 4.5
-#set tmargin 1.5 
+set tmargin 1.5 
 
-set x2label 'weight' font ',11'
-plot "$FILE" using 1:2 with points linecolor rgb '#FC600A' pt 6 title "weight", \
-"$FILE" using 1:3 with lines linecolor rgb '#FC600A' linewidth 1.5 title "trend", \
+set x2label 'тегло' font ',11'
+plot "$FILE" using 1:2 with points linecolor rgb '#FC600A' pt 6 title "измерено", \
+"$FILE" using 1:3 with lines linecolor rgb '#FC600A' linewidth 1.5 title "тренд", \
 "$FILE" using 1:3:(0):(\$2-\$3) with vectors nohead linecolor rgb '#B2D732' linewidth 1.5 notitle, \
 $PLOT_DIET
 
-#set arrow from graph 0,first 6.1 to graph 1, first 6.1 nohead lt 0 lw 2 lc rgb '#5F9EA0' front
-# set arrow from graph 0,first 4.1 to graph 1, first 4.1 nohead lt 0 lw 2 lc rgb '#5F9EA0' front
-#set x2label 'blood sugar level' font ',11'
-#plot 6.1 with filledcurves y1=4.1 fs transparent solid 0.15 lc rgb '#AFEEEE' notitle, \
-#"$FILE" using 1:5 with points linecolor rgb '#FC600A' pt 6 title "mmol/L", \
-#"$FILE" using 1:6 with lines linecolor rgb '#FC600A' linewidth 1.5 title "trend", \
-#"$FILE" using 1:6:(0):(\$5-\$6) with vectors nohead linecolor rgb '#B2D732' linewidth 1.5 notitle
+set arrow from graph 0,first 6.1 to graph 1, first 6.1 nohead lt 0 lw 2 lc rgb '#5F9EA0' front
+#set arrow from graph 0,first 4.1 to graph 1, first 4.1 nohead lt 0 lw 2 lc rgb '#5F9EA0' front
+set x2label 'концентрация на глюкоза в кръвта (mmol/L)' font ',11'
+plot 6.1 with filledcurves y1=4.1 fs transparent solid 0.15 lc rgb '#AFEEEE' notitle, \
+"$FILE" using 1:5 with points linecolor rgb '#FC600A' pt 6 title "измерено", \
+"$FILE" using 1:6 with lines linecolor rgb '#FC600A' linewidth 1.5 title "тренд", \
+"$FILE" using 1:6:(0):(\$5-\$6) with vectors nohead linecolor rgb '#B2D732' linewidth 1.5 notitle
 EOF
