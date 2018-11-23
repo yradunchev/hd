@@ -15,7 +15,6 @@ for line in f:
     splitline = line.split(" ")
     date = splitline[0]
     weight = float(splitline[1])
-    bmi = weight/(1.75**2)
     mmolL = float(splitline[2])
     if wtrend is None:
         wtrend = weight
@@ -25,6 +24,7 @@ for line in f:
         mtrend = mmolL
     else:
         mtrend = mtrend + 0.1 * (mmolL - mtrend)
+    bmi = wtrend/(1.75**2)
     s += "%s %.1f %.2f %.2f %.2f %.2f\n" %(date, weight, wtrend, bmi, mmolL, mtrend)
 f.close()
 
