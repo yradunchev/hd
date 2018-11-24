@@ -7,23 +7,27 @@
 
 ## scripts:
 
-_scripts/process_ - calculate trends from raw data   
-_scripts/dataplot_ - plot sleep & steps data for the current month   
-_scripts/healthplot_ - plot weight and BSL data for the last 31 days   
+_scripts/lngt_ - draw data for period of time   
+_scripts/ovwl_ - draw overall weight loss progress   
+_scripts/proc_ - process raw data, calculate moving averages   
+_scripts/slac_ - draw sleep and activity    
+_scripts/wl_ - draw weight loss   
+_scripts/wlbs_ - draw weight loss and blood sugar level   
 
 ## data:
 
 _data/data_ - weight and blood sugar level measurements   
-_data/processed_ - weight and bsl data with added exponentially smoothed moving average with 10% smoothing and BMI   
+_data/processed_ - weight and bsl data with exponentially smoothed moving average with 10% smoothing and BMI   
 _data/diet_ - diet plan   
 _data/bp_ - blood pressure measurements   
-_data/201810_ - monthly sleep & steps data
+_data/2018NN_ - monthly sleep & activity data   
 
 ## plots:
 
-_plots/dataplot.png_ - last 31 days data plot   
-_plots/201810.png_ - current month sleep & steps data   
-_plots/weightbsl.png_ - relation between weight loss and bsl
+_plots/dataplot.png_ - last 31 days weight loss and bs data plot   
+_plots/2018NN.png_ - current month sleep & steps data plot  
+_plots/weightbsl.png_ - relation between weight loss and bsl   
+_plots/progress.png_ - overall weight loss progress plot   
 
 ## links:
 
