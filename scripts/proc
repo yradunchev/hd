@@ -1,33 +1,26 @@
-#!/usr/bin/env python3
+#!/bin/bash
 
-from os.path import expanduser
+filein=$HOME/hd/data/data
+fileout=$HOME/hd/data/processed
+wtrend=''
+mtrend=''
 
-filein = expanduser("~")+"/hd/data/data"
-fileout = expanduser("~")+"/hd/data/processed"
-
-wtrend = None
-mtrend = None
-f = open(filein, "r")
-s = "#Date Weight Trend BMI BSL Trend\n"
-for line in f:
-    if len(line.strip()) == 0:
-        continue
-    splitline = line.split(" ")
-    date = splitline[0]
-    weight = float(splitline[1])
-    mmolL = float(splitline[2])
-    if wtrend is None:
-        wtrend = weight
-    else:
-        wtrend = wtrend + 0.1 * (weight - wtrend)
-    if mtrend is None:
-        mtrend = mmolL
-    else:
-        mtrend = mtrend + 0.1 * (mmolL - mtrend)
-    bmi = wtrend/(1.75**2)
-    s += "%s %.1f %.2f %.2f %.2f %.2f\n" %(date, weight, wtrend, bmi, mmolL, mtrend)
-f.close()
-
-p = open(fileout, "w")
-p.write(s)
-p.close()
+[ -f "$fileout" ] && mv "$fileout" "$fileout.bck"
+printf '#Date Weight Trend BMI BSL Trend\n' > "$fileout"
+while read -r date weight mmoll
+do
+  if [ -z "$wtrend" ] 
+  then
+    wtrend=$weight
+  else
+    wtrend=$(echo "scale=3;$wtrend+0.1*($weight-$wtrend)" | bc)
+  fi
+  if [ -z "$mtrend" ] 
+  then
+    mtrend=$mmoll
+  else
+    mtrend=$(echo "scale=3;$mtrend+0.1*($mmoll-$mtrend)" | bc)
+  fi
+  bmi=$(echo "scale=3;$wtrend/(1.75^2)" | bc)
+  printf '%s %.2f %.2f %.2f %.2f %.2f\n' "$date" "$weight" "$wtrend" "$bmi" "$mmoll" "$mtrend" >> "$fileout"
+done < "$filein"
