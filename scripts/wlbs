@@ -1,13 +1,13 @@
 #!/bin/bash
 
+# settings
 rootpth="$HOME/hd"
-datefmt='+%Y-%m-%d'
 datafle="$rootpth/data/processed"
 dietfle="$rootpth/data/diet"
 pathout="$rootpth/plots"
-
 rawfile="$rootpth/data/data"
 procfle="$rootpth/data/processed"
+datefmt='+%Y-%m-%d'
 wtrend=''
 mtrend=''
 
