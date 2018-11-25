@@ -8,12 +8,9 @@
 ## scripts:
 
 _scripts/lngt_ - draw data for period of time   
-_scripts/ovwl_ - draw overall weight loss progress   
-_scripts/proc_ - process raw data, calculate moving averages   
 _scripts/slac_ - draw sleep and activity    
-_scripts/wl_ - draw weight loss   
 _scripts/wlbs_ - draw weight loss and blood sugar level   
-
+_scripts/bp_ - draw blood presure and heart rate data   
 ## data:
 
 _data/data_ - weight and blood sugar level measurements   
@@ -24,7 +21,8 @@ _data/2018NN_ - monthly sleep & activity data
 
 ## plots:
 
-_plots/dataplot.png_ - last 31 days weight loss and bs data plot   
+_plots/dataplot.png_ - last 31 days weight loss and bs data plot  
+_plots/weight.png_ - last 31 days weight loss   
 _plots/2018NN.png_ - current month sleep & steps data plot  
 _plots/weightbsl.png_ - relation between weight loss and bsl   
 _plots/progress.png_ - overall weight loss progress plot   
