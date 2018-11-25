@@ -13,46 +13,43 @@ mtrend=''
 
 # process raw data generate processed data file
 [ -f "$procfle" ] && mv "$procfle" "$procfle.bck"
-printf '#Date Weight Trend BMI BSL Trend\n' > "$procfle"
-while read -r date weight mmoll
-do
-  if [ -z "$wtrend" ]
-  then
+printf '#Date Weight Trend BMI BSL Trend\n' >"$procfle"
+while read -r date weight mmoll; do
+  if [ -z "$wtrend" ]; then
     wtrend=$weight
   else
     wtrend=$(echo "scale=3;$wtrend+0.1*($weight-$wtrend)" | bc)
   fi
-  if [ -z "$mtrend" ]
-  then
+  if [ -z "$mtrend" ]; then
     mtrend=$mmoll
   else
     mtrend=$(echo "scale=3;$mtrend+0.1*($mmoll-$mtrend)" | bc)
   fi
   bmi=$(echo "scale=3;$wtrend/(1.75^2)" | bc)
   printf '%s %.2f %.2f %.2f %.2f %.2f\n' \
-    "$date" "$weight" "$wtrend" "$bmi" "$mmoll" "$mtrend" >> "$procfle"
-done < "$rawfile"
+    "$date" "$weight" "$wtrend" "$bmi" "$mmoll" "$mtrend" >>"$procfle"
+done <"$rawfile"
 
+# plots
 if [ "$#" -eq 0 ]; then
-  datefr=$( date -d "-31 days" $datefmt )
-  dateto=$( date -d "+1 day" $datefmt )
+  datefr=$(date -d "-31 days" $datefmt)
+  dateto=$(date -d "+1 day" $datefmt)
   combfl="dataplot.png"
   wghtfl="weight.png"
 elif [ "$#" -eq 2 ]; then
-  datefr=$( date -d "$1 - 1 day" $datefmt )
-  dateto=$( date -d "$2 + 1 day" $datefmt )
+  datefr=$(date -d "$1 - 1 day" $datefmt)
+  dateto=$(date -d "$2 + 1 day" $datefmt)
   combfl="wlbs-$datefr-$dateto.png"
   wghtfl="wl-$datefr-$dateto.png"
 else
   echo "Usage: $0 [FROM_DATE TO_DATE]"
   exit -1
 fi
-
 if [ -e "$dietfle" ]; then
   dietplt="\"$dietfle\" using 1:2 with lines lt 0 lw 2 lc rgb '#5F9EA0' title 'планирано'"
 fi
 
-gnuplot -p << EOF
+gnuplot -p <<EOF
 set timefmt "%Y-%m-%d"
 set grid
 set key reverse spacing 0.85 box font ',9'

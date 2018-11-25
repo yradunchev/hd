@@ -1,7 +1,6 @@
 #!/bin/bash
 
 FILE="$HOME/hd/data/bp"
-
 gnuplot -p << EOF
 set terminal png enhanced background rgb '#F0F7D4' size 600,400
 set output "$HOME/hd/plots/bp.png"
@@ -26,8 +25,6 @@ f(x) = mean_d
 fit f(x) "$FILE" u 1:3 via mean_d
 f(x) = mean_h
 fit f(x) "$FILE" u 1:4 via mean_h
-
 plot "$FILE" u 2:xticlabels(1) lc rgb '#9ACD32', "" u 3 lc rgb 'yellow', "" u 4 lc rgb 'orange', \
 mean_s w l lc rgb '#9ACD32', mean_d w l lc 'yellow', mean_h w l lc 'orange'
 EOF
-

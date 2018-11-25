@@ -1,7 +1,6 @@
 #!/bin/bash
 
 FILE="$HOME/hd/data/$1"
-
 gnuplot -p << EOF
 stats '$FILE' using 2:6 nooutput
 set terminal png enhanced background rgb '#F0F7D4' size 1200,600
@@ -23,14 +22,11 @@ set boxwidth 0.5 relative
 set style fill solid 0.50 border -1
 set multiplot layout 1,2 title "Данни за $1" font ",12"
 set tmargin 1.5
-
 plot "$FILE" using 3:xticlabels(1) lc rgb 'yellow', "" using 2 lc rgb 'green', \
 STATS_mean_x w l lc rgb 'orange'
-
 set title "крачки" font ",12"
 set ytics 1000
 set y2tics 1000
 set mytics 2.5
 plot "$FILE" using 6:xticlabels(1) lc rgb 'green', STATS_mean_y w l lc rgb 'orange'
 EOF
-
