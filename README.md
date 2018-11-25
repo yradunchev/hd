@@ -7,7 +7,6 @@
 
 ## scripts:
 
-_scripts/lngt_ - draw data for period of time   
 _scripts/slac_ - draw sleep and activity    
 _scripts/wlbs_ - draw weight loss and blood sugar level   
 _scripts/bp_ - draw blood presure and heart rate data   
