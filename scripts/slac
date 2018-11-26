@@ -17,8 +17,7 @@ elif [ "$#" -eq 1 ]; then
 else
   die "Usage: $0 [YYYYDD]"
 fi
-
-[ -f $datafle ] || die "Data file $datafle does not exist!"
+[ -f "$datafle" ] || die "Data file $datafle does not exist!"
 
 gnuplot -p <<EOF
 stats '$datafle' using 2:6 nooutput
