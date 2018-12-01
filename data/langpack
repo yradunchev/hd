@@ -5,4 +5,7 @@ l3=("тегло" "weight" "vikt")
 l4=("глюкоза в кръвта (mmol/L)" "blood glucose (mmol/L)" "blodsocker (mmol/L)")
 l5=("затлъстяване" "obese" "överfet")
 l6=("наднормено тегло" "overweight" "övervikt")
-
+l7=("сън (в минути)" "sleep (min)" "i sömn (min)")
+l8=("крачки" "step count" "steg")
+l9=("заспал" "asleep" "sovande")
+l10=("буден" "awake" "vaken")
