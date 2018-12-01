@@ -1,3 +1,6 @@
+declare -A lngmp=([en]=1 [se]=2)
+#lng=${langmap[${LANG:0:2}]}
+[[ -z "$lng" ]] && lng=0 || lng=${lngmp[$lng]}
 l0=("планирано" "diet plan" "planerat")
 l1=("измерено" "measured" "uppmätt")
 l2=("тренд" "trend" "tendens")

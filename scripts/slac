@@ -9,10 +9,7 @@ function die() {
   exit 1
 }
 
-# language of plot labels and titles: 0 bg, 1 en, 2 se
-declare -A lngmp=([en]=1 [se]=2)
-[[ -z "$lng" ]] && lng=0 || lng=${lngmp[$lng]}
-#lng=${langmap[${LANG:0:2}]}
+# language of plot labels and titles
 # shellcheck source=/home/mumrik/hd/data/langpack
 . "$langpck" # import labels and titles
 
