@@ -17,6 +17,7 @@ _data/processed_ - weight and bsl data with exponentially smoothed moving averag
 _data/diet_ - diet plan   
 _data/bp_ - blood pressure measurements   
 _data/2018NN_ - monthly sleep & activity data   
+_data/langpack_ - translation pack   
 
 ## plots:
 
