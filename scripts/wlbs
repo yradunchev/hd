@@ -7,6 +7,7 @@ dietfle="$rootpth/data/diet"
 pathout="$rootpth/plots"
 rawfile="$rootpth/data/data"
 procfle="$rootpth/data/processed"
+langpck="$rootpth/data/langpack"
 datefmt='+%Y-%m-%d'
 wtrend=''
 mtrend=''
@@ -15,13 +16,8 @@ mtrend=''
 declare -A lngmp=([en]=1 [se]=2)
 [[ -z "$lng" ]] && lng=0 || lng=${lngmp[$lng]}
 #lng=${langmap[${LANG:0:2}]}
-l0=("планирано" "diet plan" "planerat")
-l1=("измерено" "measured" "uppmätt")
-l2=("тренд" "trend" "tendens")
-l3=("тегло" "weight" "vikt")
-l4=("глюкоза в кръвта (mmol/L)" "blood glucose (mmol/L)" "blodsocker (mmol/L)")
-l5=("затлъстяване" "obese" "överfet")
-l6=("наднормено тегло" "overweight" "övervikt")
+# shellcheck source=/home/mumrik/hd/data/langpack
+. "$langpck" # import labels and titles
 
 # process raw data generate processed data file
 [ -f "$procfle" ] && mv "$procfle" "$procfle.bck"
