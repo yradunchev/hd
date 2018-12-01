@@ -11,6 +11,16 @@ datefmt='+%Y-%m-%d'
 wtrend=''
 mtrend=''
 
+# bilingual plot labels and titles: 0 - Bulgarian, 1 - English
+[ -z "$lng" ] && lng=0 || lng=1
+l0=("планирано" "diet plan")
+l1=("измерено" "measured")
+l2=("тренд" "trend")
+l3=("тегло" "weight")
+l4=("глюкоза в кръвта (mmol/L)" "blood glucose (mmol/L)")
+l5=("затлъстяване" "obese")
+l6=("наднормено тегло" "overweight")
+
 # process raw data generate processed data file
 [ -f "$procfle" ] && mv "$procfle" "$procfle.bck"
 printf '#Date Weight Trend BMI BSL Trend\n' >"$procfle"
@@ -46,7 +56,7 @@ else
   exit -1
 fi
 if [ -e "$dietfle" ]; then
-  dietplt="\"$dietfle\" using 1:2 with lines lt 0 lw 2 lc rgb '#5F9EA0' title 'планирано'"
+  dietplt="\"$dietfle\" using 1:2 with lines lt 0 lw 2 lc rgb '#5F9EA0' title \"${l0[${lng}]}\""
 fi
 
 gnuplot -p <<EOF
@@ -65,28 +75,28 @@ set autoscale y
 # plot weight and bsl
 set terminal png truecolor enhanced background rgb '#F0F7D4' size 1200,600
 set output "$pathout/$combfl"
-set multiplot layout 1,2 title "за периода от $datefr до $dateto" font ",12"
+set multiplot layout 1,2 title "$datefr - $dateto" font ",12"
 set tmargin 1.5 
-set x2label 'тегло' font ',11'
-plot "$datafle" using 1:2 with points linecolor rgb '#FC600A' pt 6 title "измерено", \
-"$datafle" using 1:3 with lines linecolor rgb '#FC600A' linewidth 1.5 title "тренд", \
+set x2label "${l3[${lng}]}" font ',11'
+plot "$datafle" using 1:2 with points linecolor rgb '#FC600A' pt 6 title "${l1[${lng}]}", \
+"$datafle" using 1:3 with lines linecolor rgb '#FC600A' linewidth 1.5 title "${l2[${lng}]}", \
 "$datafle" using 1:3:(0):(\$2-\$3) with vectors nohead linecolor rgb '#B2D732' linewidth 1.5 notitle, \
 $dietplt
 set arrow from graph 0,first 6.1 to graph 1, first 6.1 nohead lt 0 lw 2 lc rgb '#5F9EA0' front
 #set arrow from graph 0,first 4.1 to graph 1, first 4.1 nohead lt 0 lw 2 lc rgb '#5F9EA0' front
-set x2label 'концентрация на глюкоза в кръвта (mmol/L)' font ',11'
+set x2label "${l4[${lng}]}" font ',11'
 plot 6.1 with filledcurves y1=4.1 fs transparent solid 0.15 lc rgb '#AFEEEE' notitle, \
-"$datafle" using 1:5 with points linecolor rgb '#FC600A' pt 6 title "измерено", \
-"$datafle" using 1:6 with lines linecolor rgb '#FC600A' linewidth 1.5 title "тренд", \
+"$datafle" using 1:5 with points linecolor rgb '#FC600A' pt 6 title "${l1[${lng}]}", \
+"$datafle" using 1:6 with lines linecolor rgb '#FC600A' linewidth 1.5 title "${l2[${lng}]}", \
 "$datafle" using 1:6:(0):(\$5-\$6) with vectors nohead linecolor rgb '#B2D732' linewidth 1.5 notitle
 
 # plot weight
 unset multiplot
 set terminal png truecolor enhanced background rgb '#F0F7D4' size 800,600
 set output "$pathout/$wghtfl"
-set x2label 'за периода от $datefr до $dateto' font ',11'
-plot "$datafle" using 1:2 with points linecolor rgb '#FC600A' pt 6 title "измерено", \
-"$datafle" using 1:3 with lines linecolor rgb '#FC600A' linewidth 1.5 title "тренд", \
+set x2label '$datefr - $dateto' font ',11'
+plot "$datafle" using 1:2 with points linecolor rgb '#FC600A' pt 6 title "${l1[${lng}]}", \
+"$datafle" using 1:3 with lines linecolor rgb '#FC600A' linewidth 1.5 title "${l2[${lng}]}", \
 "$datafle" using 1:3:(0):(\$2-\$3) with vectors nohead linecolor rgb '#B2D732' linewidth 1.5 notitle, \
 $dietplt
 
@@ -97,11 +107,11 @@ set ytics 1
 set autoscale y
 set autoscale x
 set output "$pathout/progress.png"
-set x2label 'тегло' font ',11'
+set x2label "${l3[${lng}]}" font ',11'
 set arrow from graph 0,first 92 to graph 1, first 92 nohead lt 0 lw 2 lc rgb '#FC600A' front
-plot 92 with filledcurves y1=200 fs transparent solid 0.25 lc rgb '#FF4500' title "затлъстяване", \
-92 with filledcurves y1=77 fs transparent solid 0.25 lc rgb '#FFA500' title "наднормено тегло", \
-"$datafle" using 1:3 with lines linecolor rgb '#2E8B57' linewidth 1.5 title "тренд", \
-"$datafle" using 1:2 with lines linecolor rgb '#FA8072' linewidth 1.5 title "тегло", \
+plot 92 with filledcurves y1=200 fs transparent solid 0.25 lc rgb '#FF4500' title "${l5[${lng}]}", \
+92 with filledcurves y1=77 fs transparent solid 0.25 lc rgb '#FFA500' title "${l6[${lng}]}", \
+"$datafle" using 1:3 with lines linecolor rgb '#2E8B57' linewidth 1.5 title "${l2[${lng}]}", \
+"$datafle" using 1:2 with lines linecolor rgb '#FA8072' linewidth 1.5 title "${l1[${lng}]}", \
 $dietplt
 EOF
