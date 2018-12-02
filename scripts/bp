@@ -3,8 +3,8 @@
 datafle="$HOME/hd/data/bp"
 tempfle=$(mktemp /tmp/bp.XXXXXX)
 trap 'rm -f -- "$tempfle"' EXIT
-head -n1 "$datafle" > "$tempfle"
-tail -n 11 "$datafle" >> "$tempfle"
+head -n 1 "$datafle" > "$tempfle"
+tail -n 10 "$datafle" >> "$tempfle"
 
 gnuplot -p << EOF
 set terminal png enhanced background rgb '#F0F7D4' size 600,400
