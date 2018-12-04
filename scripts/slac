@@ -28,6 +28,8 @@ gnuplot -p <<EOF
 stats '$datafle' using 2:6 nooutput
 set terminal png enhanced background rgb '#F0F7D4' size 1200,600
 set output "$outfile"
+set style line 100 lt 1 lc rgb "black" lw 1
+set style line 101 lt 0.5 lc rgb "gray" lw 1
 set grid noxtics mytics ytics ls 100, ls 101
 set title "${l7[${lng}]}" font ",12"
 set key invert reverse spacing 0.85 box font ',9' autotitle columnhead
@@ -39,8 +41,6 @@ set y2tics 0,60
 set autoscale y
 set style histogram rowstacked
 set style data histograms
-set style line 100 lt 1 lc rgb "black" lw 1
-set style line 101 lt 0.5 lc rgb "gray" lw 1
 set boxwidth 0.5 relative
 set style fill solid 0.50 border -1
 set multiplot layout 1,2 title "$(date $datefmt)" font ",12"
