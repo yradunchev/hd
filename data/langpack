@@ -3,7 +3,7 @@ declare -A lngmp=([en]=1 [se]=2)
 [[ -z "$lng" ]] && lng=0 || lng=${lngmp[$lng]}
 l0=("планирано" "diet plan" "planerat")
 l1=("измерено" "measured" "uppmätt")
-l2=("тренд" "trend" "tendens")
+l2=("тренд (MA10%S)" "trend (MA10%S)" "tendens (MA10%S)")
 l3=("тегло" "weight" "vikt")
 l4=("глюкоза в кръвта (mmol/L)" "blood glucose (mmol/L)" "blodsocker (mmol/L)")
 l5=("затлъстяване" "obese" "överfet")
