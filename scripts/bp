@@ -18,7 +18,7 @@ set output "$HOME/hd/plots/bp.png"
 set style line 100 lt 1 lc rgb "black" lw 1
 set style line 101 lt 0.5 lc rgb "gray" lw 1
 set grid noxtics mytics ytics ls 100, ls 101
-set title "${l14[${lng}]}" font ",12"
+set title "${l11[${lng}]}" font ",12"
 set key reverse spacing 0.85 box font ',9'
 set tics font ",9"
 set xtics rotate nomirror 
@@ -37,9 +37,9 @@ f(x) = mean_d
 fit f(x) "$tempfle" u 1:3 via mean_d
 f(x) = mean_h
 fit f(x) "$tempfle" u 1:4 via mean_h
-plot "$tempfle" u 2:xticlabels(1) lc rgb '#9ACD32' title "${l11[${lng}]}", \
-"" u 3 lc rgb 'yellow' title "${l12[${lng}]}", \
-"" u 4 lc rgb 'orange' title "${l13[${lng}]}", \
+plot "$tempfle" u 2:xticlabels(1) lc rgb '#9ACD32' title "${l12[${lng}]}", \
+"" u 3 lc rgb 'yellow' title "${l13[${lng}]}", \
+"" u 4 lc rgb 'orange' title "${l14[${lng}]}", \
 mean_s w l lc rgb '#9ACD32' notitle, \
 mean_d w l lc 'yellow' notitle, \
 mean_h w l lc 'orange' notitle
