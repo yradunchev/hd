@@ -48,7 +48,7 @@ elif [ "$#" -eq 2 ]; then
   wghtfl="wl-$datefr-$dateto.png"
 else
   echo "Usage: $0 [FROM_DATE TO_DATE]"
-  exit -1
+  exit 1
 fi
 if [ -e "$dietfle" ]; then
   dietplt="\"$dietfle\" using 1:2 with lines lt 0 lw 2 lc rgb '#5F9EA0' title \"${l0[${lng}]}\""
