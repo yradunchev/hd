@@ -1,3 +1,4 @@
+# shellcheck disable=SC2034
 declare -A lngmp=([en]=1 [se]=2)
 #lng=${langmap[${LANG:0:2}]}
 [[ -z "$lng" ]] && lng=0 || lng=${lngmp[$lng]}
