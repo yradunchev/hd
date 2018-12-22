@@ -8,7 +8,6 @@ rawfile="$rootpth/data/data"
 weekfle="$rootpth/data/weekloss"
 langpck="$rootpth/data/langpack"
 wtrend=''
-mtrend=''
 
 # language of plot labels and titles
 # shellcheck source=/home/mumrik/hd/data/langpack
@@ -17,7 +16,7 @@ mtrend=''
 [ -f "$weekfle" ] && mv "$weekfle" "$weekfle.bck"
 printf '#Date WeightLoss\n' >"$weekfle"
 while read -r date weight mmoll; do
-  day=$(date -d $date +%u)
+  day=$(date -d "$date" +%u)
   if [ -z "$wtrend" ]; then
     wtrend="$weight"
     fdate=1
@@ -26,10 +25,10 @@ while read -r date weight mmoll; do
     unset fdate
   fi
   [ "$day" == 1 ] && lastm="$wtrend"
-  [ "$day" == 7 ] && wloss=$(echo "scale=3;($lastm-$wtrend)*-1" | bc) \
+  [ "$day" == 7 ] && wloss="$(echo "scale=3;($lastm-$wtrend)*-1" | bc)" \
     || unset wloss
   [ "$wloss" ] && [ -z "$fdate" ] && printf '%s %.2f\n' \
-    $(date -d $date $datefmt) "$wloss" >>"$weekfle"
+    "$(date -d "$date" "$datefmt")" "$wloss" >>"$weekfle"
 done < "$rawfile"
 
 gnuplot -p <<EOF
@@ -44,7 +43,7 @@ set boxwidth 0.5 relative
 set style fill solid 0.50 border -1
 set title "${l15[${lng}]}" font ",12"
 set terminal png enhanced background rgb '#F0F7D4' size 800,600
-set output "$rootpth/plots/weekloss.png"
+set output "$pathout/weekloss.png"
 set mytics 10
 set yrange [-3:3]
 #set ytics -3,3
