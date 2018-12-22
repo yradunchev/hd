@@ -7,6 +7,7 @@ dietfle="$rootpth/data/diet"
 pathout="$rootpth/plots"
 rawfile="$rootpth/data/data"
 procfle="$rootpth/data/processed"
+weekfle="$rootpth/data/weekloss"
 langpck="$rootpth/data/langpack"
 datefmt='+%Y-%m-%d'
 wtrend=''
@@ -34,6 +35,23 @@ while read -r date weight mmoll; do
   printf '%s %.2f %.2f %.2f %.2f %.2f\n' \
     "$date" "$weight" "$wtrend" "$bmi" "$mmoll" "$mtrend" >>"$procfle"
 done <"$rawfile"
+unset wtrend
+[ -f "$weekfle" ] && mv "$weekfle" "$weekfle.bck"
+printf '#Date WeightLoss\n' >"$weekfle"
+while read -r date weight mmoll; do
+  day=$(date -d $date +%u)
+  if [ -z "$wtrend" ]; then
+    wtrend="$weight"
+    fdate=1
+  else
+    wtrend=$(echo "scale=3;$wtrend+0.1*($weight-$wtrend)" | bc)
+    unset fdate
+  fi
+  [ "$day" == 1 ] && lastm="$wtrend"
+  [ "$day" == 7 ] && wloss=$(echo "scale=3;$lastm-$wtrend" | bc) || unset wloss
+  [ "$wloss" ] && [ -z "$fdate" ] && printf '%s %.2f\n' "$date" "$wloss" \
+    >>"$weekfle"
+done <"$rawfile"
 
 # plots
 if [ "$#" -eq 0 ]; then
@@ -51,7 +69,8 @@ else
   exit 1
 fi
 if [ -e "$dietfle" ]; then
-  dietplt="\"$dietfle\" using 1:2 with lines lt 0 lw 2 lc rgb '#5F9EA0' title \"${l0[${lng}]}\""
+  dietplt="\"$dietfle\" using 1:2 with lines lt 0 lw 2 lc rgb '#5F9EA0'\
+    title \"${l0[${lng}]}\""
 fi
 
 gnuplot -p <<EOF
