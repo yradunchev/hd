@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# settings
+datefmt='+%y-%V'
+rootpth="$HOME/hd"
+pathout="$rootpth/plots"
+rawfile="$rootpth/data/data"
+weekfle="$rootpth/data/weekloss"
+langpck="$rootpth/data/langpack"
+wtrend=''
+mtrend=''
+
+# language of plot labels and titles
+# shellcheck source=/home/mumrik/hd/data/langpack
+. "$langpck" # import labels and titles
+
+[ -f "$weekfle" ] && mv "$weekfle" "$weekfle.bck"
+printf '#Date WeightLoss\n' >"$weekfle"
+while read -r date weight mmoll; do
+  day=$(date -d $date +%u)
+  if [ -z "$wtrend" ]; then
+    wtrend="$weight"
+    fdate=1
+  else
+    wtrend=$(echo "scale=3;$wtrend+0.1*($weight-$wtrend)" | bc)
+    unset fdate
+  fi
+  [ "$day" == 1 ] && lastm="$wtrend"
+  [ "$day" == 7 ] && wloss=$(echo "scale=3;($lastm-$wtrend)*-1" | bc) \
+    || unset wloss
+  [ "$wloss" ] && [ -z "$fdate" ] && printf '%s %.2f\n' \
+    $(date -d $date $datefmt) "$wloss" >>"$weekfle"
+done < "$rawfile"
+
+gnuplot -p <<EOF
+set style line 100 lt 1 lc rgb "black" lw 1
+set style line 101 lt 0.5 lc rgb "gray" lw 1
+set grid noxtics mytics ytics ls 100, ls 101
+set tics font ",9"
+set xtics rotate nomirror
+set style histogram rowstacked
+set style data histograms
+set boxwidth 0.5 relative
+set style fill solid 0.50 border -1
+set title "${l15[${lng}]}" font ",12"
+set terminal png enhanced background rgb '#F0F7D4' size 800,600
+set output "$rootpth/plots/weekloss.png"
+set mytics 10
+set yrange [-3:3]
+#set ytics -3,3
+#set y2tics -3,3
+plot "$weekfle" using 2:xticlabels(1) lc rgb 'green' notitle
+EOF

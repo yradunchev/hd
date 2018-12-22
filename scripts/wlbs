@@ -7,7 +7,6 @@ dietfle="$rootpth/data/diet"
 pathout="$rootpth/plots"
 rawfile="$rootpth/data/data"
 procfle="$rootpth/data/processed"
-weekfle="$rootpth/data/weekloss"
 langpck="$rootpth/data/langpack"
 datefmt='+%Y-%m-%d'
 wtrend=''
@@ -34,23 +33,6 @@ while read -r date weight mmoll; do
   bmi=$(echo "scale=3;$wtrend/(1.75^2)" | bc)
   printf '%s %.2f %.2f %.2f %.2f %.2f\n' \
     "$date" "$weight" "$wtrend" "$bmi" "$mmoll" "$mtrend" >>"$procfle"
-done <"$rawfile"
-unset wtrend
-[ -f "$weekfle" ] && mv "$weekfle" "$weekfle.bck"
-printf '#Date WeightLoss\n' >"$weekfle"
-while read -r date weight mmoll; do
-  day=$(date -d $date +%u)
-  if [ -z "$wtrend" ]; then
-    wtrend="$weight"
-    fdate=1
-  else
-    wtrend=$(echo "scale=3;$wtrend+0.1*($weight-$wtrend)" | bc)
-    unset fdate
-  fi
-  [ "$day" == 1 ] && lastm="$wtrend"
-  [ "$day" == 7 ] && wloss=$(echo "scale=3;$lastm-$wtrend" | bc) || unset wloss
-  [ "$wloss" ] && [ -z "$fdate" ] && printf '%s %.2f\n' "$date" "$wloss" \
-    >>"$weekfle"
 done <"$rawfile"
 
 # plots
