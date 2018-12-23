@@ -37,16 +37,16 @@ set style line 101 lt 0.5 lc rgb "gray" lw 1
 set grid noxtics mytics ytics ls 100, ls 101
 set tics font ",9"
 set xtics rotate nomirror
-set style histogram rowstacked
-set style data histograms
-set boxwidth 0.5 relative
+#set style histogram rowstacked
+#set style data histograms
+set boxwidth 0.3 absolute
 set style fill solid 0.50 border -1
 set title "${l15[${lng}]}" font ",12"
-set terminal png enhanced background rgb '#F0F7D4' size 800,600
+set terminal png enhanced background rgb '#F0F7D4'
 set output "$pathout/weekloss.png"
-set mytics 10
+set mytics 5
 set yrange [-3:3]
-#set ytics -3,3
-#set y2tics -3,3
-plot "$weekfle" using 2:xticlabels(1) lc rgb 'green' notitle
+set nokey
+plot "$weekfle" using (\$2<0?\$2:1/0):xticlabels(1) w boxes lc rgb 'green', \
+"$weekfle" using (\$2>0?\$2:1/0):xticlabels(1) w boxes lc rgb 'red'
 EOF
