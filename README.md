@@ -3,7 +3,6 @@
 [![progress](plots/progress.png)](https://raw.githubusercontent.com/yradunchev/hd/master/plots/progress.png)   
 [![weight plot](plots/weight.png)](https://raw.githubusercontent.com/yradunchev/hd/master/plots/weight.png)   
 [![dataplot](plots/201812.png)](https://raw.githubusercontent.com/yradunchev/hd/master/plots/201812.png)   
-[![bloodpresure](plots/bp.png)](https://raw.githubusercontent.com/yradunchev/hd/master/plots/bp.png)   
 
 ## scripts:
 
