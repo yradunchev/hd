@@ -8,7 +8,8 @@
 
 _scripts/slac_ - draw sleep and activity    
 _scripts/wlbs_ - draw weight loss and blood sugar level   
-_scripts/bp_ - draw blood presure and heart rate data   
+_scripts/bp_ - draw blood presure and heart rate data  
+
 ## data:
 
 _data/data_ - weight and blood sugar level measurements   
