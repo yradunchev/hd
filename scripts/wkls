@@ -5,7 +5,7 @@ datefmt='+%YW%V'
 rootpth="$HOME/hd"
 pathout="$rootpth/plots"
 rawfile="$rootpth/data/data"
-weekfle="$rootpth/data/weekloss"
+weekfle="$rootpth/data/weekchange"
 langpck="$rootpth/data/langpack"
 wtrend=''
 
@@ -42,7 +42,7 @@ set boxwidth 0.9 absolute
 set style fill solid 0.50 border -1
 set title "${l15[${lng}]}" font ",12"
 set terminal png enhanced background rgb '#F0F7D4'
-set output "$pathout/weekloss.png"
+set output "$pathout/weekchange.png"
 set mytics 5
 set yrange [-3:3]
 set nokey
