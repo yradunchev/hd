@@ -124,9 +124,9 @@ set autoscale x
 set output "$pathout/blsprogress.png"
 set x2label "${l4[${lng}]}" font ',11'
 set style fill transparent solid 0.25 noborder
-plot 6.1 with filledcurves y1=4.1 fs lc rgb '#AFEEEE' notitle, \
-6.1 with filledcurves y1=20 fs lc rgb '#FFA500' notitle, \
-3 with filledcurves y1=4.1 fs lc rgb '#FFA500' notitle, \
+plot 6.1 with filledcurves y1=4.1 fs lc rgb '#B3FF66' notitle, \
+6.1 with filledcurves y1=20 fs lc rgb '#AFEEEE' notitle, \
+3 with filledcurves y1=4.1 fs lc rgb '#FC600A' notitle, \
 "$datafle" using 1:6 with lines linecolor rgb '#FC600A' linewidth 1.5 title "${l2[${lng}]}", \
 "$datafle" using 1:5 with points linecolor rgb '#FC600A' pt 6 ps 0.5 title "${l1[${lng}]}", \
 "$datafle" using 1:6:(0):(\$5-\$6) with vectors nohead linecolor rgb '#B2D732' linewidth 1.5 notitle
