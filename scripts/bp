@@ -10,7 +10,8 @@ langpck="$rootpth/data/langpack"
 . "$langpck" # import labels and titles
 
 trap 'rm -f -- "$tempfle"' EXIT
-tail -n 10 "$datafle" >> "$tempfle"
+# sed -n '10,$ { /regex/= }' file
+sed -n '2,11p' "$datafle" >> "$tempfle"
 
 gnuplot -p << EOF
 set terminal png enhanced background rgb '#F0F7D4' size 600,400
