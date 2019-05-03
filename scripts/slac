@@ -24,9 +24,9 @@ else
 fi
 [ -f "$datafle" ] || die "Data file $datafle does not exist!"
 
-means=$( awk '{x+=$2; v += ($2 > 0) ? 1 : 0; next} END{print x/v}' "$datafle" )
-meanw=$( awk '{x+=$3; v += ($3 > 0) ? 1 : 0; next} END{print x/v}' "$datafle" )
-meana=$( awk '{x+=$6; v += ($6 > 0) ? 1 : 0; next} END{print x/v}' "$datafle" )
+means=$( awk 'NR>1{x+=$2; v += ($2 > 0) ? 1 : 0; next} END{print x/v}' "$datafle" )
+meanw=$( awk 'NR>1{x+=$3; v += ($3 > 0) ? 1 : 0; next} END{print x/v}' "$datafle" )
+meana=$( awk 'NR>1{x+=$6; v += ($6 > 0) ? 1 : 0; next} END{print x/v}' "$datafle" )
 
 gnuplot -p <<EOF
 stats '$datafle' using 2:6 nooutput
