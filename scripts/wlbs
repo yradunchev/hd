@@ -97,7 +97,7 @@ $dietplt
 
 # plot overall progress
 set format x "%b"
-set xtics "2019-05-03",2592000,"2019-10-08" #rotate
+set xtics "2019-05-01",2592000,"2019-10-08" #rotate
 set ytics 1
 set autoscale y
 set autoscale x
