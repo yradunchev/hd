@@ -29,14 +29,14 @@ _plots/progress.png_ - overall weight loss progress plot
 
 ## links:
 
+[Letter on Corpulence, Addressed to the Public, by William Banting](https://archive.org/details/letteroncorpulen00bant/page/n3)   
 [The Hacker's Diet, How to lose weight and hair through stress and poor nutrition By John Walker](http://www.fourmilab.ch/hackdiet/)  
-[Diet Doctor - A low-carb diet for beginners](https://www.dietdoctor.com/low-carb)   
-[No Sugar](https://www.facebook.com/Nooosugar/)   
-[NUT Nutrition Software](http://nut.sourceforge.net/)    
 [IF on Reddit](https://www.reddit.com/r/intermittentfasting/wiki/index)   
-[Jason Fung, MD on IF](https://www.youtube.com/watch?v=v9Aw0P7GjHE)   
+[Diet Doctor - A low-carb diet for beginners](https://www.dietdoctor.com/low-carb)   
+[Sugar: The Bitter Truth](https://www.youtube.com/watch?v=dBnniua6-oM)   
 [Sugar Coated Documentary](https://www.dailymotion.com/video/x61x56l)   
 [Sugar is Not a Treat, Jody Stanislaw, TEDxSunValley](https://www.youtube.com/watch?v=tic7X3ET4gE)   
+[Jason Fung, MD on IF](https://www.youtube.com/watch?v=v9Aw0P7GjHE)   
 [The mathematics of weight loss, Ruben Meerman, TEDxQUT](https://www.youtube.com/watch?v=vuIlsN32WaE)   
-[Sugar: The Bitter Truth](https://www.youtube.com/watch?v=dBnniua6-oM)   
-[Letter on Corpulence, Addressed to the Public, by William Banting](https://archive.org/details/letteroncorpulen00bant/page/n3)   
+[No Sugar](https://www.facebook.com/Nooosugar/)   
+[NUT Nutrition Software](http://nut.sourceforge.net/)    
