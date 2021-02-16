@@ -34,7 +34,7 @@ _plots/progress.png_ - overall weight loss progress plot
 [IF on Reddit](https://www.reddit.com/r/intermittentfasting/wiki/index)   
 [Diet Doctor - A low-carb diet for beginners](https://www.dietdoctor.com/low-carb)   
 [Sugar: The Bitter Truth](https://www.youtube.com/watch?v=dBnniua6-oM)   
-[Sugar Coated Documentary](https://www.dailymotion.com/video/x61x56l)   
+[Sugar Coated Documentary](https://www.youtube.com/watch?v=4bJ2lpapwH4)   
 [Sugar is Not a Treat, Jody Stanislaw, TEDxSunValley](https://www.youtube.com/watch?v=tic7X3ET4gE)   
 [Jason Fung, MD on IF](https://www.youtube.com/watch?v=v9Aw0P7GjHE)   
 [The mathematics of weight loss, Ruben Meerman, TEDxQUT](https://www.youtube.com/watch?v=vuIlsN32WaE)   
