@@ -2,7 +2,7 @@
 
 # settings
 datefmt='+%YW%V'
-rootpth="$HOME/hd"
+rootpth="$HOME/P/projects/hd"
 pathout="$rootpth/plots"
 rawfile="$rootpth/data/data"
 weekfle="$rootpth/data/weekchange"
