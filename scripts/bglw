@@ -25,6 +25,7 @@ set mxtics 5
 set pointsize
 set nokey
 set xrange [115:85] reverse
+set yrange [4:24]
 set output "$pathout/bglandweight.png"
 set style circle radius 0.15
 plot "$rawfile" u 2:3 with circles lc rgb "green" fs solid 1.0 border lt -1, \
