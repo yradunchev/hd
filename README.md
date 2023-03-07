@@ -1,8 +1,7 @@
 # my if-sugarfree jorney  
 
 [![progress](plots/progress.png)](https://raw.githubusercontent.com/yradunchev/hd/master/plots/progress.png)   
-[![weight plot](plots/weight.png)](https://raw.githubusercontent.com/yradunchev/hd/master/plots/weight.png)   
-[![dataplot](plots/bglandweight.png)](https://raw.githubusercontent.com/yradunchev/hd/master/plots/bglandweight.png)   
+[![data plot](plots/dataplot.png)](https://raw.githubusercontent.com/yradunchev/hd/master/plots/dataplot.png)   
 
 ## scripts:
 

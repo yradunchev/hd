@@ -68,9 +68,9 @@ set ytics 0.5
 set autoscale y
 
 # plot weight and bsl
-set terminal png truecolor enhanced background rgb '#F0F7D4' size 1200,600
+set terminal png truecolor enhanced background rgb '#F0F7D4' size 600,1200
 set output "$pathout/$combfl"
-set multiplot layout 1,2 title "$datefr - $dateto" font ",12"
+set multiplot layout 2,1 # title "$datefr - $dateto" font ",12"
 set tmargin 1.5 
 set x2label "${l3[${lng}]}" font ',11'
 plot "$datafle" using 1:2 with points linecolor rgb '#FC600A' pt 6 title "${l1[${lng}]}", \
