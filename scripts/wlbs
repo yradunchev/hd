@@ -67,6 +67,7 @@ set xrange ["$datefr":"$dateto"]
 set ytics 0.5
 set autoscale y
 
+
 # plot weight and bsl
 set terminal png truecolor enhanced background rgb '#F0F7D4' size 600,1200
 set output "$pathout/$combfl"
