@@ -17,4 +17,4 @@ l11=("кръвно налягане и пулс" "blood presure and heart rate" 
 l12=("систолично" "systolic" "")
 l13=("диастолично" "diastolic" "")
 l14=("пулс" "heart rate" "")
-l15=("седмично изменение" "weekly change")
+l15=("средно седмично изменение" "weekly change (average)")

@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# settings
+datefmt='+%YW%V'
+rootpth="$HOME/P/projects/hd"
+pathout="$rootpth/plots"
+rawfile="$rootpth/data/data"
+weekfle="$rootpth/data/weekchange"
+langpck="$rootpth/data/langpack"
+wtrend=''
+
+# language of plot labels and titles
+# shellcheck source=/home/mumrik/hd/data/langpack
+. "$langpck" # import labels and titles
+
+#[ -f "$weekfle" ] && mv "$weekfle" "$weekfle.bck"
+#printf '#Date WeightLoss\n' >"$weekfle"
+#while read -r date weight mmoll; do
+#  day=$(date -d "$date" +%u)
+#  if [ -z "$wtrend" ]; then
+#    wtrend="$weight"
+#    fdate=1
+#  else
+#    wtrend=$(echo "scale=3;$wtrend+0.1*($weight-$wtrend)" | bc)
+#    unset fdate
+#  fi
+#  [ "$day" == 1 ] && lastm="$wtrend"
+#  [ "$day" == 7 ] && wloss="$(echo "scale=3;($lastm-$wtrend)*-1" | bc)" \
+#    || unset wloss
+#  [ "$wloss" ] && [ -z "$fdate" ] && printf '%s %.2f\n' \
+#    "$(date -d "$date" "$datefmt")" "$wloss" >>"$weekfle"
+##done < "$rawfile"
+
+gnuplot -p <<EOF
+set style line 100 lt 1 lc rgb "black" lw 1
+set style line 101 lt 0.5 lc rgb "gray" lw 1
+set grid noxtics mytics ytics ls 100, ls 101
+set tics font ",9"
+set xtics rotate by -60 #rotate by -90 mirror
+set ylabel "kg" rotate by 0 offset 0.5
+set boxwidth 0.9 absolute
+set style fill solid 0.50 border -1
+set title "${l15[${lng}]}" font ",12"
+set terminal png enhanced background rgb '#F0F7D4'
+set output "$pathout/weekchange.png"
+set mytics 5
+set yrange [-3:3]
+set nokey
+plot "$weekfle" using (\$2<0?\$2:1/0):xticlabels(1) w boxes lc rgb 'green', \
+"$weekfle" using (\$2>0?\$2:1/0):xticlabels(1) w boxes lc rgb 'red'
+EOF
